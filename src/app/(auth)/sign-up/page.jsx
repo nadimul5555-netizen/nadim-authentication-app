@@ -13,7 +13,7 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
-import { signUp } from '../../../lib/auth-client';
+import { signIn, signUp } from '../../../lib/auth-client';
 import { Eye, EyeSlash } from '@gravity-ui/icons';
 
 const SignUp = () => {
@@ -32,8 +32,17 @@ const SignUp = () => {
     password: data.password,
     callbackURL: "/",
 });
-console.log(resData,error)
-  };
+console.log('after sign-up',resData,error)
+
+
+}
+
+const handleGoogleSignUp= async()=>{
+ const resData = await signIn.social({
+  provider: 'google',
+ })
+ 
+};
 
   return (
     <Form className="w-full max-w-96 container mx-auto " onSubmit={onSubmit}>
@@ -92,6 +101,8 @@ console.log(resData,error)
             Cancel
           </Button>
         </Fieldset.Actions>
+        <p>Or</p>
+        <Button onClick={handleGoogleSignUp}>Sign Up with Google</Button>
       </Fieldset>
     </Form>
   );

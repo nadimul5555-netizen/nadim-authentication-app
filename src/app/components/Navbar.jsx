@@ -24,14 +24,16 @@ export default function NavbarPage() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="block py-2 font-medium text-accent">
+              <Link href="/dashboard" className="block py-2 font-medium text-accent">
                 Dashboard
               </Link>
             </li>
             <li>
-              <Link href="#" className="block py-2">
-                Pricing
-              </Link>
+              {
+                session?.user? <Link href="/Profile" className="block py-2">
+                Profile
+              </Link>:''
+                  }
             </li>
          
 </>
